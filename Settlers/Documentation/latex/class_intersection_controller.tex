@@ -1,0 +1,147 @@
+\hypertarget{class_intersection_controller}{}\doxysection{Intersection\+Controller Class Reference}
+\label{class_intersection_controller}\index{IntersectionController@{IntersectionController}}
+
+
+Controls information about an intersection and its settlement/city placement.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_intersection_controller_a3231c1aec265bf6b12f906d4768168af}{add\+\_\+adjacent\+\_\+intersections}} (List$<$ Game\+Object $>$ intersections)
+\begin{DoxyCompactList}\small\item\em Add the adjacent intersections. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_intersection_controller_acab8088ac3850fb32ee3bf2ae2409902}{add\+\_\+adjacent\+\_\+edges}} (List$<$ Game\+Object $>$ edges)
+\begin{DoxyCompactList}\small\item\em Add the adjacent edges. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_intersection_controller_aa933644e9cdbac3daacdea0a62a26268}{valid\+\_\+player}} (int player\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Makes the intersection a valid settlement placement for a specific player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_intersection_controller_afe73c0fbd72a8d17a9f39116e9b9da5c}{invalid\+\_\+player}} (int player\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Makes the intersection an invalid settlement placement for a specific player. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_intersection_controller_a09c6ef3a01b37d019d5b0027bf6c40d9}\label{class_intersection_controller_a09c6ef3a01b37d019d5b0027bf6c40d9}} 
+void {\bfseries invalid\+\_\+all} ()
+\begin{DoxyCompactList}\small\item\em Makes the intersection an invalid settlement placement for all players. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_intersection_controller_ac6d4339a74052a56c41a5e7663a4c36d}{place\+\_\+settlement}} (int player\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Place the players settlement and set validities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_intersection_controller_a6ef6134db11a67bf3b8d43915c1d1d65}{place\+\_\+city}} (int player\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Upgrade the players settlement to a city. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_intersection_controller_a8ca9aacd421f06612927e2219fdd80e0}\label{class_intersection_controller_a8ca9aacd421f06612927e2219fdd80e0}} 
+bool {\bfseries has\+\_\+settlement} = false
+\item 
+\mbox{\Hypertarget{class_intersection_controller_a9f6e9e607d11311d216aeb7d943dd094}\label{class_intersection_controller_a9f6e9e607d11311d216aeb7d943dd094}} 
+bool {\bfseries has\+\_\+city} = false
+\item 
+\mbox{\Hypertarget{class_intersection_controller_aba886f0613fb93db884f0b68b46a8e8c}\label{class_intersection_controller_aba886f0613fb93db884f0b68b46a8e8c}} 
+int {\bfseries settlement\+\_\+player}
+\item 
+\mbox{\Hypertarget{class_intersection_controller_ab2ae5ddd7fcea62c32f31a00157fee27}\label{class_intersection_controller_ab2ae5ddd7fcea62c32f31a00157fee27}} 
+bool {\bfseries has\+\_\+neighbour} = false
+\item 
+\mbox{\Hypertarget{class_intersection_controller_aac1ad09bffbee877e07ab2678a89000d}\label{class_intersection_controller_aac1ad09bffbee877e07ab2678a89000d}} 
+List$<$ Game\+Object $>$ {\bfseries adjacent\+\_\+intersections} = new List$<$Game\+Object$>$()
+\item 
+\mbox{\Hypertarget{class_intersection_controller_adab140d30ba9a33eb37fa6fddf5e83ec}\label{class_intersection_controller_adab140d30ba9a33eb37fa6fddf5e83ec}} 
+List$<$ Game\+Object $>$ {\bfseries adjacent\+\_\+edges} = new List$<$Game\+Object$>$()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controls information about an intersection and its settlement/city placement. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_intersection_controller_acab8088ac3850fb32ee3bf2ae2409902}\label{class_intersection_controller_acab8088ac3850fb32ee3bf2ae2409902}} 
+\index{IntersectionController@{IntersectionController}!add\_adjacent\_edges@{add\_adjacent\_edges}}
+\index{add\_adjacent\_edges@{add\_adjacent\_edges}!IntersectionController@{IntersectionController}}
+\doxysubsubsection{\texorpdfstring{add\_adjacent\_edges()}{add\_adjacent\_edges()}}
+{\footnotesize\ttfamily void Intersection\+Controller.\+add\+\_\+adjacent\+\_\+edges (\begin{DoxyParamCaption}\item[{List$<$ Game\+Object $>$}]{edges }\end{DoxyParamCaption})}
+
+
+
+Add the adjacent edges. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em edges} & List of adjacent edge objects.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_intersection_controller_a3231c1aec265bf6b12f906d4768168af}\label{class_intersection_controller_a3231c1aec265bf6b12f906d4768168af}} 
+\index{IntersectionController@{IntersectionController}!add\_adjacent\_intersections@{add\_adjacent\_intersections}}
+\index{add\_adjacent\_intersections@{add\_adjacent\_intersections}!IntersectionController@{IntersectionController}}
+\doxysubsubsection{\texorpdfstring{add\_adjacent\_intersections()}{add\_adjacent\_intersections()}}
+{\footnotesize\ttfamily void Intersection\+Controller.\+add\+\_\+adjacent\+\_\+intersections (\begin{DoxyParamCaption}\item[{List$<$ Game\+Object $>$}]{intersections }\end{DoxyParamCaption})}
+
+
+
+Add the adjacent intersections. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em intersections} & List of adjacent intersection objects.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_intersection_controller_afe73c0fbd72a8d17a9f39116e9b9da5c}\label{class_intersection_controller_afe73c0fbd72a8d17a9f39116e9b9da5c}} 
+\index{IntersectionController@{IntersectionController}!invalid\_player@{invalid\_player}}
+\index{invalid\_player@{invalid\_player}!IntersectionController@{IntersectionController}}
+\doxysubsubsection{\texorpdfstring{invalid\_player()}{invalid\_player()}}
+{\footnotesize\ttfamily void Intersection\+Controller.\+invalid\+\_\+player (\begin{DoxyParamCaption}\item[{int}]{player\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Makes the intersection an invalid settlement placement for a specific player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+num} & Player number.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_intersection_controller_a6ef6134db11a67bf3b8d43915c1d1d65}\label{class_intersection_controller_a6ef6134db11a67bf3b8d43915c1d1d65}} 
+\index{IntersectionController@{IntersectionController}!place\_city@{place\_city}}
+\index{place\_city@{place\_city}!IntersectionController@{IntersectionController}}
+\doxysubsubsection{\texorpdfstring{place\_city()}{place\_city()}}
+{\footnotesize\ttfamily void Intersection\+Controller.\+place\+\_\+city (\begin{DoxyParamCaption}\item[{int}]{player\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Upgrade the players settlement to a city. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+num} & Number of the player.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_intersection_controller_ac6d4339a74052a56c41a5e7663a4c36d}\label{class_intersection_controller_ac6d4339a74052a56c41a5e7663a4c36d}} 
+\index{IntersectionController@{IntersectionController}!place\_settlement@{place\_settlement}}
+\index{place\_settlement@{place\_settlement}!IntersectionController@{IntersectionController}}
+\doxysubsubsection{\texorpdfstring{place\_settlement()}{place\_settlement()}}
+{\footnotesize\ttfamily void Intersection\+Controller.\+place\+\_\+settlement (\begin{DoxyParamCaption}\item[{int}]{player\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Place the players settlement and set validities. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+num} & Number of the player.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_intersection_controller_aa933644e9cdbac3daacdea0a62a26268}\label{class_intersection_controller_aa933644e9cdbac3daacdea0a62a26268}} 
+\index{IntersectionController@{IntersectionController}!valid\_player@{valid\_player}}
+\index{valid\_player@{valid\_player}!IntersectionController@{IntersectionController}}
+\doxysubsubsection{\texorpdfstring{valid\_player()}{valid\_player()}}
+{\footnotesize\ttfamily void Intersection\+Controller.\+valid\+\_\+player (\begin{DoxyParamCaption}\item[{int}]{player\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Makes the intersection a valid settlement placement for a specific player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+num} & Player number.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/Intersection\+Controller.\+cs\end{DoxyCompactItemize}

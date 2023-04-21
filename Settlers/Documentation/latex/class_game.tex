@@ -1,0 +1,190 @@
+\hypertarget{class_game}{}\doxysection{Game Class Reference}
+\label{class_game}\index{Game@{Game}}
+
+
+Contains the main logic for the overall state and game loop.  
+
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_adce4f6e20f457d5b8d62e89bf97a1235}\label{class_game_adce4f6e20f457d5b8d62e89bf97a1235}} 
+enum {\bfseries Game\+States} \{ {\bfseries first\+\_\+turn}
+, {\bfseries second\+\_\+turn}
+, {\bfseries general}
+ \}
+\item 
+\mbox{\Hypertarget{class_game_a199ea27abe06f2e961e0e9c2fe6d18d7}\label{class_game_a199ea27abe06f2e961e0e9c2fe6d18d7}} 
+enum {\bfseries Turn\+States} \{ \newline
+{\bfseries diceroll}
+, {\bfseries general}
+, {\bfseries settlement}
+, {\bfseries city}
+, \newline
+{\bfseries road}
+, {\bfseries trading}
+, {\bfseries robber}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_a4ed97d5a106b41159c621a8eb332c77f}\label{class_game_a4ed97d5a106b41159c621a8eb332c77f}} 
+void {\bfseries next\+\_\+turn} ()
+\begin{DoxyCompactList}\small\item\em Ends the current players turn. Called in editor by \char`\"{}\+End\+Turn\+Button\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a658bdad02299cc3556f0b97a8ce44af1}\label{class_game_a658bdad02299cc3556f0b97a8ce44af1}} 
+void {\bfseries build\+\_\+settlement} ()
+\begin{DoxyCompactList}\small\item\em Enters the settlement building state if the current player has the required resources. Called in editor by \char`\"{}\+Build\+Settlement\+Button\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a196d2615672b198a5738e4c67d371c80}\label{class_game_a196d2615672b198a5738e4c67d371c80}} 
+void {\bfseries build\+\_\+city} ()
+\begin{DoxyCompactList}\small\item\em Enters the city building state if the current player has the required resources. Called in editor by \char`\"{}\+Build\+City\+Button\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_ad302b2b2efec29dfc77d043ed6d25e7e}\label{class_game_ad302b2b2efec29dfc77d043ed6d25e7e}} 
+void {\bfseries build\+\_\+road} ()
+\begin{DoxyCompactList}\small\item\em Enters the road building state if the current player has the required resources. Called in editor by \char`\"{}\+Build\+Road\+Button\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a3e622133fafa7761a7ad8bc8e8e5b2aa}\label{class_game_a3e622133fafa7761a7ad8bc8e8e5b2aa}} 
+void {\bfseries build\+\_\+card} ()
+\begin{DoxyCompactList}\small\item\em Creates and issues a development card if the current player has the required resources. Called in editor by \char`\"{}\+Build\+Card\+Button\char`\"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a5b3e551608a18349b70039b6940ef119}{trigger\+\_\+win}} (string player\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Triggers a game win for the specified player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a30e87ed4df655d579f7856f3e7f6b3dd}{check\+\_\+longest\+\_\+road}} (\mbox{\hyperlink{class_player_controller}{Player\+Controller}} player)
+\begin{DoxyCompactList}\small\item\em Check if the specified player should be awarded longest road. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a2f2e0dc004d888d71071bd419d53829e}{check\+\_\+largest\+\_\+army}} (\mbox{\hyperlink{class_player_controller}{Player\+Controller}} player)
+\begin{DoxyCompactList}\small\item\em Check if the specified player should be awarded largest army. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_aceffdca90b3fde4b1f0007489535ccad}\label{class_game_aceffdca90b3fde4b1f0007489535ccad}} 
+bool {\bfseries dice\+\_\+enabled} = false
+\item 
+List$<$ string $>$ \mbox{\hyperlink{class_game_a9ea854c5f38a7453fe916b438747701b}{basic\+\_\+tile\+\_\+layout}}
+\item 
+List$<$ int $>$ \mbox{\hyperlink{class_game_a56f5163c20a9f7d4153027c53c45bc32}{basic\+\_\+token\+\_\+layout}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_a99155ba54b0c403351cb979527629a97}\label{class_game_a99155ba54b0c403351cb979527629a97}} 
+static int {\bfseries points\+\_\+to\+\_\+win} = 5
+\item 
+\mbox{\Hypertarget{class_game_a459d13ffe07d92ca955efdeeb267f251}\label{class_game_a459d13ffe07d92ca955efdeeb267f251}} 
+static int {\bfseries num\+\_\+players} = 3
+\item 
+\mbox{\Hypertarget{class_game_a3b3ed6c7efa67b77e79125653c03eec8}\label{class_game_a3b3ed6c7efa67b77e79125653c03eec8}} 
+static Game\+States {\bfseries game\+\_\+state} = Game\+States.\+first\+\_\+turn
+\item 
+\mbox{\Hypertarget{class_game_a21186fc64b2670ed1e4c93eccc8b5453}\label{class_game_a21186fc64b2670ed1e4c93eccc8b5453}} 
+static Turn\+States {\bfseries turn\+\_\+state} = Turn\+States.\+settlement
+\item 
+\mbox{\Hypertarget{class_game_a67a6e899a48a1cdda7ea98909424e454}\label{class_game_a67a6e899a48a1cdda7ea98909424e454}} 
+static int {\bfseries player\+\_\+turn} = 0
+\item 
+\mbox{\Hypertarget{class_game_a65cc087d4f1395676d8b67082d8e32af}\label{class_game_a65cc087d4f1395676d8b67082d8e32af}} 
+static string {\bfseries robber\+\_\+location} = \char`\"{}0\char`\"{}
+\item 
+\mbox{\Hypertarget{class_game_a94f4e14fe68b52f2af4750fc9efcec2b}\label{class_game_a94f4e14fe68b52f2af4750fc9efcec2b}} 
+static bool {\bfseries valid\+\_\+move} = false
+\item 
+\mbox{\Hypertarget{class_game_a993a5327c12cdb61ec4cbd9c26c1465e}\label{class_game_a993a5327c12cdb61ec4cbd9c26c1465e}} 
+static List$<$ string $>$ {\bfseries tile\+\_\+layout}
+\item 
+\mbox{\Hypertarget{class_game_aad5aec85542f7e375c3187173c144b80}\label{class_game_aad5aec85542f7e375c3187173c144b80}} 
+static List$<$ int $>$ {\bfseries token\+\_\+layout}
+\item 
+\mbox{\Hypertarget{class_game_abc6482d11335749119e27828220cdade}\label{class_game_abc6482d11335749119e27828220cdade}} 
+static Game\+Object {\bfseries current\+\_\+intersection}
+\item 
+\mbox{\Hypertarget{class_game_a1e7e49d5054b778ef7a66bbdaa625a05}\label{class_game_a1e7e49d5054b778ef7a66bbdaa625a05}} 
+static Game\+Object {\bfseries current\+\_\+edge}
+\item 
+\mbox{\Hypertarget{class_game_a2eb0c833cb14128c26b1bcb50e9fcc5c}\label{class_game_a2eb0c833cb14128c26b1bcb50e9fcc5c}} 
+static Game\+Object {\bfseries current\+\_\+tile}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the main logic for the overall state and game loop. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_a2f2e0dc004d888d71071bd419d53829e}\label{class_game_a2f2e0dc004d888d71071bd419d53829e}} 
+\index{Game@{Game}!check\_largest\_army@{check\_largest\_army}}
+\index{check\_largest\_army@{check\_largest\_army}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{check\_largest\_army()}{check\_largest\_army()}}
+{\footnotesize\ttfamily void Game.\+check\+\_\+largest\+\_\+army (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player_controller}{Player\+Controller}}}]{player }\end{DoxyParamCaption})}
+
+
+
+Check if the specified player should be awarded largest army. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The {\ttfamily \mbox{\hyperlink{class_player_controller}{Player\+Controller}}} of the player to check.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a30e87ed4df655d579f7856f3e7f6b3dd}\label{class_game_a30e87ed4df655d579f7856f3e7f6b3dd}} 
+\index{Game@{Game}!check\_longest\_road@{check\_longest\_road}}
+\index{check\_longest\_road@{check\_longest\_road}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{check\_longest\_road()}{check\_longest\_road()}}
+{\footnotesize\ttfamily void Game.\+check\+\_\+longest\+\_\+road (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player_controller}{Player\+Controller}}}]{player }\end{DoxyParamCaption})}
+
+
+
+Check if the specified player should be awarded longest road. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The {\ttfamily \mbox{\hyperlink{class_player_controller}{Player\+Controller}}} of the player to check.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a5b3e551608a18349b70039b6940ef119}\label{class_game_a5b3e551608a18349b70039b6940ef119}} 
+\index{Game@{Game}!trigger\_win@{trigger\_win}}
+\index{trigger\_win@{trigger\_win}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{trigger\_win()}{trigger\_win()}}
+{\footnotesize\ttfamily void Game.\+trigger\+\_\+win (\begin{DoxyParamCaption}\item[{string}]{player\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Triggers a game win for the specified player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+name} & Name of the victorious player.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_game_a9ea854c5f38a7453fe916b438747701b}\label{class_game_a9ea854c5f38a7453fe916b438747701b}} 
+\index{Game@{Game}!basic\_tile\_layout@{basic\_tile\_layout}}
+\index{basic\_tile\_layout@{basic\_tile\_layout}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{basic\_tile\_layout}{basic\_tile\_layout}}
+{\footnotesize\ttfamily List$<$string$>$ Game.\+basic\+\_\+tile\+\_\+layout}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \textcolor{keyword}{new}\ List<string>\ \{\ \textcolor{stringliteral}{"{}mountain"{}},\ \textcolor{stringliteral}{"{}pasture"{}},\ \textcolor{stringliteral}{"{}forest"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}field"{}},\ \textcolor{stringliteral}{"{}hill"{}},\ \textcolor{stringliteral}{"{}pasture"{}},\ \textcolor{stringliteral}{"{}hill"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}field"{}},\ \textcolor{stringliteral}{"{}forest"{}},\ \textcolor{stringliteral}{"{}desert"{}},\ \textcolor{stringliteral}{"{}forest"{}},\ \textcolor{stringliteral}{"{}mountain"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}forest"{}},\ \textcolor{stringliteral}{"{}mountain"{}},\ \textcolor{stringliteral}{"{}field"{}},\ \textcolor{stringliteral}{"{}pasture"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}hill"{}},\ \textcolor{stringliteral}{"{}field"{}},\ \textcolor{stringliteral}{"{}pasture"{}}\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_a56f5163c20a9f7d4153027c53c45bc32}\label{class_game_a56f5163c20a9f7d4153027c53c45bc32}} 
+\index{Game@{Game}!basic\_token\_layout@{basic\_token\_layout}}
+\index{basic\_token\_layout@{basic\_token\_layout}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{basic\_token\_layout}{basic\_token\_layout}}
+{\footnotesize\ttfamily List$<$int$>$ Game.\+basic\+\_\+token\+\_\+layout}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \textcolor{keyword}{new}\ List<int>\ \{\ 10,\ 2,\ 9,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 12,\ 6,\ 4,\ 10,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 9,\ 11,\ 0,\ 3,\ 8,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 8,\ 3,\ 4,\ 5,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 5,\ 6,\ 11\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/Game.\+cs\end{DoxyCompactItemize}

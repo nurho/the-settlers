@@ -1,0 +1,60 @@
+\hypertarget{class_resource_manager}{}\doxysection{Resource\+Manager Class Reference}
+\label{class_resource_manager}\index{ResourceManager@{ResourceManager}}
+
+
+The {\ttfamily \mbox{\hyperlink{class_resource_manager}{Resource\+Manager}}} class is used for allocating resources to players.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_resource_manager_a3a1d95b9610f46ecca0357d35c31cfd9}{dice\+\_\+allocation}} (int roll\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Uses the given dice roll to allocate resources to intersections bordering the tile(s) with that number. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_resource_manager_a29e24c0c51d9a851dda6162ef61573bc}{turn\+\_\+2\+\_\+allocation}} (Game\+Object intersection, int player\+\_\+turn)
+\begin{DoxyCompactList}\small\item\em Special case of allocation used during the second turn of the game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_resource_manager_ab0f151c02190398c0b5cc27d54622d68}\label{class_resource_manager_ab0f151c02190398c0b5cc27d54622d68}} 
+void {\bfseries setup\+\_\+resources} ()
+\begin{DoxyCompactList}\small\item\em Uses the layout of the board to assign a resource to each hex tile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The {\ttfamily \mbox{\hyperlink{class_resource_manager}{Resource\+Manager}}} class is used for allocating resources to players. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_resource_manager_a3a1d95b9610f46ecca0357d35c31cfd9}\label{class_resource_manager_a3a1d95b9610f46ecca0357d35c31cfd9}} 
+\index{ResourceManager@{ResourceManager}!dice\_allocation@{dice\_allocation}}
+\index{dice\_allocation@{dice\_allocation}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{dice\_allocation()}{dice\_allocation()}}
+{\footnotesize\ttfamily void Resource\+Manager.\+dice\+\_\+allocation (\begin{DoxyParamCaption}\item[{int}]{roll\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Uses the given dice roll to allocate resources to intersections bordering the tile(s) with that number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em roll\+\_\+value} & The value of the dice roll.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_resource_manager_a29e24c0c51d9a851dda6162ef61573bc}\label{class_resource_manager_a29e24c0c51d9a851dda6162ef61573bc}} 
+\index{ResourceManager@{ResourceManager}!turn\_2\_allocation@{turn\_2\_allocation}}
+\index{turn\_2\_allocation@{turn\_2\_allocation}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{turn\_2\_allocation()}{turn\_2\_allocation()}}
+{\footnotesize\ttfamily void Resource\+Manager.\+turn\+\_\+2\+\_\+allocation (\begin{DoxyParamCaption}\item[{Game\+Object}]{intersection,  }\item[{int}]{player\+\_\+turn }\end{DoxyParamCaption})}
+
+
+
+Special case of allocation used during the second turn of the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em intersection} & The intersection the settlement was placed on.\\
+\hline
+{\em player\+\_\+turn} & Which players turn it is.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/Resource\+Manager.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,143 @@
+\hypertarget{class_edge_controller}{}\doxysection{Edge\+Controller Class Reference}
+\label{class_edge_controller}\index{EdgeController@{EdgeController}}
+
+
+Controls information about an edge and its road placement.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_edge_controller_a9072b4937215f71faaa91b8dc4b99bdd}{setup\+\_\+edge}} (Vector3 edge\+\_\+position, string edge\+\_\+orientation)
+\begin{DoxyCompactList}\small\item\em Set the edge position and orientation for roads. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_edge_controller_a1c84dc278b942ca57806dbd2a088ef61}{add\+\_\+adjacent\+\_\+intersection}} (Game\+Object intersection)
+\begin{DoxyCompactList}\small\item\em Adds an intersection to the list of adjacents. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_edge_controller_afa28839b419155128d957d53a2f18300}{add\+\_\+adjacents}} (List$<$ Game\+Object $>$ edges)
+\begin{DoxyCompactList}\small\item\em Add the adjacent edges. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_edge_controller_ae77d72e82e824a1b5f6b70d129bc7875}{valid\+\_\+player}} (int player\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Makes the edge a valid road placement for a specific player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_edge_controller_a7f26d5aff1f866a8b7fd7cd400ec2e1f}{invalid\+\_\+player}} (int player\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Makes the edge an invalid road placement for a specific player. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_edge_controller_ad1342e1f2511d05aff010a8298b25f2b}\label{class_edge_controller_ad1342e1f2511d05aff010a8298b25f2b}} 
+void {\bfseries invalid\+\_\+all} ()
+\begin{DoxyCompactList}\small\item\em Makes the edge an invalid road placement for all players. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_edge_controller_ae2ca4172baf4c895a42e0423c8651cf8}{place\+\_\+road}} (int player\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Place the players road and set validities. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_edge_controller_afbc47cde1e9576159c4a0d8ef7de073d}\label{class_edge_controller_afbc47cde1e9576159c4a0d8ef7de073d}} 
+bool {\bfseries has\+\_\+road} = false
+\item 
+\mbox{\Hypertarget{class_edge_controller_ac4c0600c0a561e12fe1fb78bab39d629}\label{class_edge_controller_ac4c0600c0a561e12fe1fb78bab39d629}} 
+int {\bfseries road\+\_\+player}
+\item 
+\mbox{\Hypertarget{class_edge_controller_a582ce8c609f5a78fedf7be2ddda6feb5}\label{class_edge_controller_a582ce8c609f5a78fedf7be2ddda6feb5}} 
+List$<$ Game\+Object $>$ {\bfseries adjacent\+\_\+intersections} = new List$<$Game\+Object$>$()
+\item 
+\mbox{\Hypertarget{class_edge_controller_a7040ed92828d0ba49da1ebd3eddfdc17}\label{class_edge_controller_a7040ed92828d0ba49da1ebd3eddfdc17}} 
+List$<$ Game\+Object $>$ {\bfseries adjacent\+\_\+edges} = new List$<$Game\+Object$>$()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controls information about an edge and its road placement. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_edge_controller_a1c84dc278b942ca57806dbd2a088ef61}\label{class_edge_controller_a1c84dc278b942ca57806dbd2a088ef61}} 
+\index{EdgeController@{EdgeController}!add\_adjacent\_intersection@{add\_adjacent\_intersection}}
+\index{add\_adjacent\_intersection@{add\_adjacent\_intersection}!EdgeController@{EdgeController}}
+\doxysubsubsection{\texorpdfstring{add\_adjacent\_intersection()}{add\_adjacent\_intersection()}}
+{\footnotesize\ttfamily void Edge\+Controller.\+add\+\_\+adjacent\+\_\+intersection (\begin{DoxyParamCaption}\item[{Game\+Object}]{intersection }\end{DoxyParamCaption})}
+
+
+
+Adds an intersection to the list of adjacents. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em intersection} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_edge_controller_afa28839b419155128d957d53a2f18300}\label{class_edge_controller_afa28839b419155128d957d53a2f18300}} 
+\index{EdgeController@{EdgeController}!add\_adjacents@{add\_adjacents}}
+\index{add\_adjacents@{add\_adjacents}!EdgeController@{EdgeController}}
+\doxysubsubsection{\texorpdfstring{add\_adjacents()}{add\_adjacents()}}
+{\footnotesize\ttfamily void Edge\+Controller.\+add\+\_\+adjacents (\begin{DoxyParamCaption}\item[{List$<$ Game\+Object $>$}]{edges }\end{DoxyParamCaption})}
+
+
+
+Add the adjacent edges. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em edges} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_edge_controller_a7f26d5aff1f866a8b7fd7cd400ec2e1f}\label{class_edge_controller_a7f26d5aff1f866a8b7fd7cd400ec2e1f}} 
+\index{EdgeController@{EdgeController}!invalid\_player@{invalid\_player}}
+\index{invalid\_player@{invalid\_player}!EdgeController@{EdgeController}}
+\doxysubsubsection{\texorpdfstring{invalid\_player()}{invalid\_player()}}
+{\footnotesize\ttfamily void Edge\+Controller.\+invalid\+\_\+player (\begin{DoxyParamCaption}\item[{int}]{player\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Makes the edge an invalid road placement for a specific player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+num} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_edge_controller_ae2ca4172baf4c895a42e0423c8651cf8}\label{class_edge_controller_ae2ca4172baf4c895a42e0423c8651cf8}} 
+\index{EdgeController@{EdgeController}!place\_road@{place\_road}}
+\index{place\_road@{place\_road}!EdgeController@{EdgeController}}
+\doxysubsubsection{\texorpdfstring{place\_road()}{place\_road()}}
+{\footnotesize\ttfamily void Edge\+Controller.\+place\+\_\+road (\begin{DoxyParamCaption}\item[{int}]{player\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Place the players road and set validities. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+num} & Number of the player.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_edge_controller_a9072b4937215f71faaa91b8dc4b99bdd}\label{class_edge_controller_a9072b4937215f71faaa91b8dc4b99bdd}} 
+\index{EdgeController@{EdgeController}!setup\_edge@{setup\_edge}}
+\index{setup\_edge@{setup\_edge}!EdgeController@{EdgeController}}
+\doxysubsubsection{\texorpdfstring{setup\_edge()}{setup\_edge()}}
+{\footnotesize\ttfamily void Edge\+Controller.\+setup\+\_\+edge (\begin{DoxyParamCaption}\item[{Vector3}]{edge\+\_\+position,  }\item[{string}]{edge\+\_\+orientation }\end{DoxyParamCaption})}
+
+
+
+Set the edge position and orientation for roads. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em edge\+\_\+position} & \\
+\hline
+{\em edge\+\_\+orientation} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_edge_controller_ae77d72e82e824a1b5f6b70d129bc7875}\label{class_edge_controller_ae77d72e82e824a1b5f6b70d129bc7875}} 
+\index{EdgeController@{EdgeController}!valid\_player@{valid\_player}}
+\index{valid\_player@{valid\_player}!EdgeController@{EdgeController}}
+\doxysubsubsection{\texorpdfstring{valid\_player()}{valid\_player()}}
+{\footnotesize\ttfamily void Edge\+Controller.\+valid\+\_\+player (\begin{DoxyParamCaption}\item[{int}]{player\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Makes the edge a valid road placement for a specific player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+num} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/Edge\+Controller.\+cs\end{DoxyCompactItemize}
