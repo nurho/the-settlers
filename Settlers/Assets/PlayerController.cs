@@ -90,6 +90,11 @@ public class PlayerController : MonoBehaviour
         GameObject.Find("Game").GetComponent<Game>().check_longest_road(this);
     }
 
+// TODO Document
+    public int get_total_resources() {
+        return lumber + brick + wool + grain + ore;
+    }
+
     /// <summary>
     /// Gives the player a specified amount of the stated resource.
     /// </summary>
