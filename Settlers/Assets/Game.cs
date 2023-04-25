@@ -27,6 +27,7 @@ public class Game : MonoBehaviour {
         city,
         road,
         trading,
+        discarding,
         robber
     }
 
@@ -42,7 +43,7 @@ public class Game : MonoBehaviour {
     string layout_mode = "basic";
 
     // Declare references to other objects/scripts (set in start method)
-    static List<GameObject> players;
+    public static List<GameObject> players;
     PlayerController longest_road_player;
     PlayerController largest_army_player;
     ResourceManager resource_manager;

@@ -21,11 +21,19 @@ public class RobberController : MonoBehaviour
     InputField wool_field;
     InputField grain_field;
     InputField ore_field;
+
+    GameObject lumber_text;
+    GameObject brick_text;
+    GameObject wool_text;
+    GameObject grain_text;
+    GameObject ore_text;
+
     PlayerController current_player;
 
     // Set variables
     float text_display_time = 2f;
-    bool valid_discard = false;
+    bool resources_visible = false;
+    int players_discarded = 0;
 
 
     // ----------------
@@ -37,7 +45,7 @@ public class RobberController : MonoBehaviour
     /// </summary>
     public void trigger_robber() {
         StartCoroutine("show_robber_text");   
-        Game.turn_state = Game.TurnStates.robber;
+        Game.turn_state = Game.TurnStates.discarding;
     }
 
     /// <summary>
@@ -47,18 +55,26 @@ public class RobberController : MonoBehaviour
         robber_text.enabled = true;
         yield return new WaitForSeconds(text_display_time);
         robber_text.enabled = false;
+        discard(Game.players[0]);
     }
 
-    void discard() {
-
-        for (int i = 0; i < Game.num_players; i++) {
-            current_player = Game.players[i].GetComponent<PlayerController>();
-            if (current_player.get_total_resources() > 7) {
-
-
+    void discard(GameObject player) {
+        current_player = player.GetComponent<PlayerController>();
+        if (current_player.get_total_resources() > 7) {
+            discard_panel.SetActive(true);
+            Text discard_text = GameObject.Find("DiscardText").GetComponent<Text>();
+            GameObject.Find("DiscardPlayerName").GetComponent<Text>().text = current_player.get_name();
+            discard_text.text = "Discard " + Mathf.FloorToInt(current_player.get_total_resources() / 2) + " resources";
+        } else {
+            players_discarded++;
+            if (players_discarded >= Game.num_players) {
+                Game.turn_state = Game.TurnStates.robber;
+                players_discarded = 0;
+                discard_panel.SetActive(false);
+            } else {
+                discard(Game.players[players_discarded]);
             }
         }
-
     }
 
     public void discard_button() {
@@ -74,16 +90,61 @@ public class RobberController : MonoBehaviour
         int.TryParse(grain_field.text, out grain);
         int.TryParse(ore_field.text, out ore);
 
+        lumber_field.text = "";
+        brick_field.text = "";
+        wool_field.text = "";
+        grain_field.text = "";
+        ore_field.text = "";
+
+
         int total = lumber + brick + wool + grain + ore;
-        if (total == Mathf.FloorToInt(current_player.get_total_resources() / 2)) {
+        if (total == Mathf.FloorToInt(current_player.get_total_resources() / 2) &&
+                    current_player.lumber >= lumber &&
+                    current_player.brick >= brick &&
+                    current_player.wool >= wool &&
+                    current_player.grain >= grain &&
+                    current_player.ore >= ore) {
             current_player.give_resource("lumber", -lumber);
             current_player.give_resource("brick", -brick);
             current_player.give_resource("wool", -wool);
             current_player.give_resource("grain", -grain);
             current_player.give_resource("ore", -ore);
-
+            players_discarded++;
+            if (players_discarded >= Game.num_players) {
+                Game.turn_state = Game.TurnStates.robber;
+                players_discarded = 0;
+                discard_panel.SetActive(false);
+            } else {
+                discard(Game.players[players_discarded]);
+            }
         }
+    }
 
+    public void show_resources_button() {
+        if (!resources_visible) {
+            lumber_text.GetComponent<Text>().text = current_player.lumber.ToString();
+            brick_text.GetComponent<Text>().text = current_player.brick.ToString();
+            wool_text.GetComponent<Text>().text = current_player.wool.ToString();
+            grain_text.GetComponent<Text>().text = current_player.grain.ToString();
+            ore_text.GetComponent<Text>().text = current_player.ore.ToString();
+
+            lumber_text.SetActive(true);
+            brick_text.SetActive(true);
+            wool_text.SetActive(true);
+            grain_text.SetActive(true);
+            ore_text.SetActive(true);
+
+            GameObject.Find("ShowDiscardButtonText").GetComponent<Text>().text = "Hide Resources";
+            resources_visible = true;
+        } else {
+            lumber_text.SetActive(false);
+            brick_text.SetActive(false);
+            wool_text.SetActive(false);
+            grain_text.SetActive(false);
+            ore_text.SetActive(false);
+            GameObject.Find("ShowDiscardButtonText").GetComponent<Text>().text = "Show Resources";
+            resources_visible = false;
+        }
     }
 
     /// <summary>
@@ -102,11 +163,24 @@ public class RobberController : MonoBehaviour
         robber_text = GameObject.Find("RobberText").GetComponent<Image>();
         robber = GameObject.Find("Robber");
         discard_panel = GameObject.Find("DiscardPanel");
-        lumber_field = GameObject.Find("LumberDiscardInputField");
-        brick_field = GameObject.Find("BrickDiscardInputField");
-        wool_field = GameObject.Find("WoolDiscardInputField");
-        grain_field = GameObject.Find("GrainDiscardInputField");
-        ore_field = GameObject.Find("OreDiscardInputField");
+        lumber_field = GameObject.Find("LumberDiscardInputField").GetComponent<InputField>();
+        brick_field = GameObject.Find("BrickDiscardInputField").GetComponent<InputField>();
+        wool_field = GameObject.Find("WoolDiscardInputField").GetComponent<InputField>();
+        grain_field = GameObject.Find("GrainDiscardInputField").GetComponent<InputField>();
+        ore_field = GameObject.Find("OreDiscardInputField").GetComponent<InputField>();
+
+        lumber_text = GameObject.Find("LumberDiscardText");
+        brick_text = GameObject.Find("BrickDiscardText");
+        wool_text = GameObject.Find("WoolDiscardText");
+        grain_text = GameObject.Find("GrainDiscardText");
+        ore_text = GameObject.Find("OreDiscardText");
+
+        lumber_text.SetActive(false);
+        brick_text.SetActive(false);
+        wool_text.SetActive(false);
+        grain_text.SetActive(false);
+        ore_text.SetActive(false);
+
 
         discard_panel.SetActive(false);
     }

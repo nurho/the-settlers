@@ -15,9 +15,20 @@ public class MainMenuController : MonoBehaviour
     /// <summary>
     /// Loads the basic (beginner) layout.
     /// </summary>
-    public void beginner_layout() {
+    public void beginner_3_player_button() {
+        Game.num_players = 3;
+        SceneManager.LoadScene("Scene1");
+    } 
+    
+    public void beginner_4_player_button() {
+        Game.num_players = 4;
         SceneManager.LoadScene("Scene1");
     }
+
+    public void quit_button() {
+        Application.Quit();
+    }
+
 
     // Start is called before the first frame update
     void Start()

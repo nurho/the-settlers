@@ -54,6 +54,12 @@ public class PlayerController : MonoBehaviour
     public void refresh_UI() {
         UI_controller.update_values();
     }
+
+    public string get_name() {
+        char[] name = this.name.ToCharArray();
+        name[6] = ' ';
+        return new string(name);
+    }   
     
     /// <summary>
     /// Confirms the placement of a settlement.
