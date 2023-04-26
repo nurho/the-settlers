@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices.ComTypes;
 
 /// <summary>
 /// Contains the main logic for the overall state and game loop.
@@ -40,7 +41,7 @@ public class Game : MonoBehaviour {
     // TODO Have these selected in pre game menu
     public static int points_to_win = 5;
     public static int num_players = 3;
-    string layout_mode = "basic";
+    public static string layout_mode = "basic";
 
     // Declare references to other objects/scripts (set in start method)
     public static List<GameObject> players;
@@ -80,9 +81,48 @@ public class Game : MonoBehaviour {
     //    Methods
     // ----------------
 
-    // TODO Document
+    // TODO Document
     public static GameObject get_current_player() {
         return players[player_turn];
+    }
+
+    private List<string> create_random_tile_layout() {
+        int i;
+        List<string> temp_layout = new List<string>();
+        foreach (string tile in basic_tile_layout) {
+            i = Random.Range(0, 2);
+            Debug.Log("Tile random: " + i);
+            if (i == 0) {
+                temp_layout.Add(tile);
+            } else if (i == 1) {
+                temp_layout.Insert(0, tile);
+            }
+        }
+
+        return temp_layout;
+    }
+
+    private List<int> create_random_token_layout(List<string> tiles) {
+        List<int> numbers = new List<int> { 2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12 };
+        List<int> temp_layout = new List<int>();
+
+        int i;
+        foreach (int token in numbers) {
+            i = Random.Range(0, 2);
+            if (i == 0) {
+                temp_layout.Add(token);
+            } else if (i == 1) {
+                temp_layout.Insert(0, token);
+            }
+        }
+
+        for (i = 0; i < tiles.Count; i++) {
+            if (tiles[i] == "desert") {
+                temp_layout.Insert(i, 0);
+            }
+        }
+
+        return temp_layout;
     }
 
     /// <summary>
@@ -269,6 +309,8 @@ public class Game : MonoBehaviour {
             token_layout = basic_token_layout;
         } else if (layout_mode == "random") {
             // TODO Create a function for random layouts i.e. advanced rules (eventually also custom layouts)
+            tile_layout = create_random_tile_layout();
+            token_layout = create_random_token_layout(tile_layout);
         }
 
         // Setup game board (tiles and tokens)

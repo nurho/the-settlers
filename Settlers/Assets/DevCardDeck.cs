@@ -40,7 +40,7 @@ public class DevCardDeck : MonoBehaviour
         int i;
         List<string> temp_deck = new List<string>();
         foreach (string card in deck) {
-            i = Random.Range(0, 1);
+            i = Random.Range(0, 2);
             if (i == 0) {
                 temp_deck.Add(card);
             } else if (i == 1) {
