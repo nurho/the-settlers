@@ -29,7 +29,6 @@ public class ResourceManager : MonoBehaviour
     /// </summary>
     /// <param name="roll_value">The value of the dice roll.</param>
     public void dice_allocation(int roll_value) {
-        List<GameObject> adjacent_intersections = new List<GameObject>();
 
         switch (roll_value) {
             case 2:
@@ -148,7 +147,7 @@ public class ResourceManager : MonoBehaviour
         List<int> token_layout = Game.token_layout;
 
         // Setup intersection locations
-        intersections = GameObject.Find("Intersections").GetComponent<IntersectionManager>().intersections;
+        intersections = IntersectionManager.intersections;
         setup_intersections();
 
         // Convert tile type to resource type

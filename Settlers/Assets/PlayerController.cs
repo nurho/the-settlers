@@ -101,6 +101,25 @@ public class PlayerController : MonoBehaviour
         return lumber + brick + wool + grain + ore;
     }
 
+    public string steal_random_resource() {
+        List<string> resources = new List<string>();
+        if (lumber > 0) {
+            resources.Add("lumber");
+        } else if (wool > 0) {
+            resources.Add("wool");
+        } else if (grain > 0) {
+            resources.Add("grain");
+        } else if (brick > 0) {
+            resources.Add("brick");
+        } else if (ore > 0) {
+            resources.Add("ore");
+        }
+
+        string r = resources[Random.Range(0,resources.Count)];
+        give_resource(r, -1);
+        return r;
+    }
+
     /// <summary>
     /// Gives the player a specified amount of the stated resource.
     /// </summary>

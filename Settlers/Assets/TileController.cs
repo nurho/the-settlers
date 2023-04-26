@@ -5,9 +5,17 @@ using UnityEngine;
 public class TileController : MonoBehaviour {
 
     public string tile_token;
+    public List<GameObject> adjacent_intersections = new List<GameObject>();
+
+    public void add_adjacent_intersections(List<GameObject> intersections) {
+        foreach (GameObject intersection in intersections) {
+            adjacent_intersections.Add(intersection);
+        }
+    }
 
     // Start is called before the first frame update
     void Start() {
+
 
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,7 +29,11 @@ public class RobberController : MonoBehaviour
     GameObject grain_text;
     GameObject ore_text;
 
+    GameObject steal_panel;
+    Dropdown steal_dropdown;
+
     PlayerController current_player;
+    Dictionary<string, PlayerController> adjacent_players;
 
     // Set variables
     float text_display_time = 2f;
@@ -147,6 +152,36 @@ public class RobberController : MonoBehaviour
         }
     }
 
+    public void steal(GameObject tile_object) {
+        adjacent_players = new Dictionary<string, PlayerController>();
+        TileController tile = tile_object.GetComponent<TileController>();
+        foreach (GameObject intersection in tile.adjacent_intersections) {
+            IntersectionController ic = intersection.GetComponent<IntersectionController>();
+            if (ic.has_settlement || ic.has_city) {
+                PlayerController player = Game.players[ic.settlement_player].GetComponent<PlayerController>();
+                if (player.get_total_resources() > 0 && !adjacent_players.ContainsKey(player.get_name())) {
+                    adjacent_players.Add(player.get_name(), player);
+                }
+            }
+        }
+
+        if (adjacent_players.Count > 0) {
+            steal_panel.SetActive(true);
+            GameObject.Find("StealPlayerName").GetComponent<Text>().text = Game.get_current_player().GetComponent<PlayerController>().get_name();
+            steal_dropdown.ClearOptions();
+            steal_dropdown.AddOptions(adjacent_players.Keys.ToList());
+        } else {
+            Game.turn_state = Game.TurnStates.general;
+        }
+    }
+
+    public void steal_button() {
+        string resource = adjacent_players[steal_dropdown.options[steal_dropdown.value].text].steal_random_resource();
+        Game.get_current_player().GetComponent<PlayerController>().give_resource(resource, 1);
+        steal_panel.SetActive(false);
+        Game.turn_state = Game.TurnStates.general;
+    }
+
     /// <summary>
     /// Sets the location of the robber logically and visually.
     /// </summary>
@@ -157,8 +192,7 @@ public class RobberController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         // Find objects
         robber_text = GameObject.Find("RobberText").GetComponent<Image>();
         robber = GameObject.Find("Robber");
@@ -175,6 +209,9 @@ public class RobberController : MonoBehaviour
         grain_text = GameObject.Find("GrainDiscardText");
         ore_text = GameObject.Find("OreDiscardText");
 
+        steal_panel = GameObject.Find("StealPanel");
+        steal_dropdown = GameObject.Find("StealDropdown").GetComponent<Dropdown>();
+
         lumber_text.SetActive(false);
         brick_text.SetActive(false);
         wool_text.SetActive(false);
@@ -183,6 +220,7 @@ public class RobberController : MonoBehaviour
 
 
         discard_panel.SetActive(false);
+        steal_panel.SetActive(false);
     }
 
     // Update is called once per frame

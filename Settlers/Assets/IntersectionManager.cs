@@ -12,7 +12,7 @@ public class IntersectionManager : MonoBehaviour
     // ----------------
 
     private int num_intersections = 54;
-    public List<GameObject> intersections;
+    public static List<GameObject> intersections;
     float[,] tile_positions;
     static float hexw = 0.8660254f;
 
@@ -55,9 +55,7 @@ public class IntersectionManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    public void setup_intersections() {
         tile_positions = BoardData.tile_positions;
         intersections = new List<GameObject>();
         edges = GameObject.Find("Edges").GetComponent<EdgeManager>().edges;
@@ -276,6 +274,13 @@ public class IntersectionManager : MonoBehaviour
         GameObject.Find("Game").GetComponent<ResourceManager>().setup_resources();
 
         Debug.Log(Time.realtimeSinceStartup);
+
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 
     // Update is called once per frame

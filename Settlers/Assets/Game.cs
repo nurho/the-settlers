@@ -29,7 +29,8 @@ public class Game : MonoBehaviour {
         road,
         trading,
         discarding,
-        robber
+        robber,
+        stealing
     }
 
 
@@ -319,9 +320,12 @@ public class Game : MonoBehaviour {
         board.GetComponent<TileManager>().place_tiles(tile_layout);
         board.GetComponent<TokenManager>().setup_tokens();
         board.GetComponent<TokenManager>().place_tokens(token_layout);
+        GameObject.Find("Intersections").GetComponent<IntersectionManager>().setup_intersections();
+        board.GetComponent<TileManager>().set_adjacent_intersections();
 
         //GameObject.Find("Board").transform.position = new Vector2(map_offset_x, map_offset_y);
         //GameObject.Find("Main Camera").transform.position = new Vector3(0.8660254f, (3 * 0.75f), -10);
+        //GameObject.Find("Main Camera").transform.position = new Vector3(BoardData.tile_positions[10,0], BoardData.tile_positions[10,1], -10);
         GameObject.Find("Main Camera").transform.position = new Vector3(0.8660254f, 2, -10);
 
         // Find and add players
@@ -440,11 +444,12 @@ public class Game : MonoBehaviour {
                 }
             } else if (turn_state == TurnStates.robber) {
                 if (Input.GetMouseButtonDown(0) && valid_move) {
-                    robber_location = current_tile.GetComponent<TileController>().tile_token;
-                    GameObject.Find("Robber").GetComponent<RobberController>().place_robber();
-
-                    turn_state = TurnStates.general;
                     valid_move = false;
+                    RobberController robber = GameObject.Find("Robber").GetComponent<RobberController>();
+                    robber_location = current_tile.GetComponent<TileController>().tile_token;
+                    robber.place_robber();
+                    turn_state = TurnStates.stealing;
+                    robber.steal(current_tile);
                 }
             }
         }
