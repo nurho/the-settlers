@@ -344,6 +344,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/VSSettingsProvider.ref.dll"
 "Assets/BoardData.cs"
 "Assets/BuildCostsImage.cs"
+"Assets/DevCardController.cs"
 "Assets/DevCardDeck.cs"
 "Assets/DiceController.cs"
 "Assets/EdgeController.cs"

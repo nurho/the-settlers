@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     public int brick = 0;
     public int ore = 0;
 
+    public List<string> dev_cards = new List<string>();
+
     // Declare references to other objects/scripts (set in start method)
     PlayerUIController UI_controller;
     SoundEffects sfx;
@@ -153,6 +155,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="card"></param>
     public void give_card(string card) {
+        dev_cards.Add(card);
+        /*
         if (card == "victory") {
             Debug.Log(this.name + "recevies victory card");
             victory_points++;
@@ -163,7 +167,31 @@ public class PlayerController : MonoBehaviour
         }
         // TODO Add behaviour for other cards
 
+        */
+
+        switch (card) {
+            case "chapel":
+            case "library":
+            case "market":
+            case "palace":
+            case "university":
+            case "monopoly":
+                victory_points++;
+                break;
+            default:
+                break;
+        }
+
         refresh_UI();
+    }
+
+    public void remove_card(string card) {
+        foreach (string s in dev_cards) {
+            if (s == card) {
+                dev_cards.Remove(s);
+                return;
+            }
+        }
     }
 
     /// <summary>

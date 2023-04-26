@@ -80,6 +80,7 @@
     <Compile Include="Assets\EdgeManager.cs" />
     <Compile Include="Assets\PlayerUIController.cs" />
     <Compile Include="Assets\EdgeController.cs" />
+    <Compile Include="Assets\DevCardController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

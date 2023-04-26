@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class InventoryUIController : MonoBehaviour
 {
+    public GameObject DevCard;
+
     GameObject inventory_panel;
     Text lumber_count;
     Text brick_count;
@@ -12,7 +14,9 @@ public class InventoryUIController : MonoBehaviour
     Text grain_count;
     Text ore_count;
     PlayerController current_player;
-    
+
+    List<GameObject> current_cards = new List<GameObject>();
+
     // TODO Document
     void refresh_UI() {
         current_player = Game.get_current_player().GetComponent<PlayerController>();
@@ -22,6 +26,34 @@ public class InventoryUIController : MonoBehaviour
         grain_count.text = current_player.grain.ToString();
         ore_count.text = current_player.ore.ToString();
     }
+
+    void create_dev_cards() {
+        GameObject content = GameObject.Find("DevCardContent");
+        foreach (string card_name in current_player.dev_cards) {
+            GameObject card = Instantiate(DevCard);
+            card.GetComponent<DevCardController>().setup(card_name);
+            card.transform.SetParent(content.transform, false);
+            current_cards.Add(card);
+        }
+    }
+
+    private void destroy_dev_cards() {
+        foreach (GameObject card in current_cards) {
+            Destroy(card);
+        }
+    }
+
+    public void open_inventory() {
+        inventory_panel.SetActive(true);
+        refresh_UI();
+        create_dev_cards();
+    }
+    
+    public void close_inventory() {
+        destroy_dev_cards();
+        inventory_panel.SetActive(false);
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,14 +76,15 @@ public class InventoryUIController : MonoBehaviour
     void Update()
     {
         if (Game.turn_state == Game.TurnStates.general) {
-            // Show the inventory when the space bar is held.
+            // Show the inventory when the space bar is pressed.
             if (Input.GetKeyDown(KeyCode.Space)) {
-                inventory_panel.SetActive(true);
-                refresh_UI();
+                open_inventory();
+                Game.turn_state = Game.TurnStates.inventory;
             }
-
-            if (Input.GetKeyUp(KeyCode.Space)) {
-                inventory_panel.SetActive(false);
+        } else if (Game.turn_state == Game.TurnStates.inventory) {
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                close_inventory();
+                Game.turn_state = Game.TurnStates.general;
             }
         }
     }

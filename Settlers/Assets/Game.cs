@@ -30,7 +30,8 @@ public class Game : MonoBehaviour {
         trading,
         discarding,
         robber,
-        stealing
+        stealing,
+        inventory
     }
 
 
@@ -56,6 +57,7 @@ public class Game : MonoBehaviour {
     public static TurnStates turn_state = TurnStates.settlement;
     public static int player_turn = 0;
     public static string robber_location = "0";
+    public static bool road_building = false;
     public static bool valid_move = false;
     public bool dice_enabled = false;
     public static List<string> tile_layout;
@@ -438,7 +440,11 @@ public class Game : MonoBehaviour {
                         players[player_turn].GetComponent<PlayerController>().place_road();
                         current_edge.GetComponent<EdgeController>().place_road(player_turn);
 
-                        turn_state = TurnStates.general;
+                        if (road_building) {
+                            road_building = false;
+                        } else {
+                            turn_state = TurnStates.general;
+                        }
                         valid_move = false;
                     }
                 }

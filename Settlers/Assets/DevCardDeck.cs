@@ -63,15 +63,19 @@ public class DevCardDeck : MonoBehaviour
         }
         
         // Add progress cards
-        // TODO Differentiate progress cards (different effects)
-        for (int i = 0; i < 6; i++) {
-            deck.Add("progress");
-        }
+        deck.Add("road_building");
+        deck.Add("road_building");
+        deck.Add("year_of_plenty");
+        deck.Add("year_of_plenty");
+        deck.Add("monopoly");
+        deck.Add("monopoly");
 
         // Add victory point cards
-        for (int i = 0; i < 5; i++) {
-            deck.Add("victory");
-        }
+        deck.Add("chapel");
+        deck.Add("library");
+        deck.Add("market");
+        deck.Add("palace");
+        deck.Add("university");
 
         shuffle();
     }

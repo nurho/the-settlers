@@ -117,9 +117,9 @@ MonoBehaviour:
     width: 1920
     height: 947
   m_MinSize: {x: 678, y: 492}
-  m_MaxSize: {x: 14002, y: 14042}
+  m_MaxSize: {x: 14001, y: 14042}
   vertical: 0
-  controlID: 8610
+  controlID: 15584
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,10 +141,10 @@ MonoBehaviour:
     y: 0
     width: 1480
     height: 947
-  m_MinSize: {x: 402, y: 492}
+  m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 8611
+  controlID: 15589
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,10 +166,10 @@ MonoBehaviour:
     y: 0
     width: 1480
     height: 591
-  m_MinSize: {x: 402, y: 221}
-  m_MaxSize: {x: 8002, y: 4021}
+  m_MinSize: {x: 403, y: 221}
+  m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 8612
+  controlID: 15590
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -393,9 +393,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: b8500100
-      m_LastClickedID: 86200
-      m_ExpandedIDs: 14d8ffff60d9ffff6cdcffffe2dcfffface1ffff24e3ffff0af6ffff1ef6ffff1cf8ffff42fbffff88930000baff000038510100d0520100
+      m_SelectedIDs: 1a130100
+      m_LastClickedID: 70426
+      m_ExpandedIDs: f0cdffff24e8ffff32eaffff42eaffff4eeaffff42fbffff5e5a0000805c0000fc5c000094100100f01001001a13010096130100261901003c1e0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -455,9 +455,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 3.2396746, y: -0.8621327, z: -8.289649}
+    m_Target: {x: 1.2587854, y: -0.014345113, z: -9.410137}
     speed: 2
-    m_Value: {x: 3.2396746, y: -0.8621327, z: -8.289649}
+    m_Value: {x: 1.2587854, y: -0.014345113, z: -9.410137}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -508,9 +508,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 5.511815
+    m_Target: 2.9405353
     speed: 2
-    m_Value: 5.511815
+    m_Value: 2.9405353
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -573,22 +573,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 50
   m_LastFolders:
-  - Assets
+  - Assets/Prefabs
   m_LastFoldersGridSize: 50
   m_LastProjectPath: C:\Users\willo\Documents\GitHub\the-settlers\Settlers
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 06590000
-    m_LastClickedID: 22790
-    m_ExpandedIDs: 00000000fc580000fe5800000059000002590000045900000659000000ca9a3b
+    m_SelectedIDs: b2fe0000
+    m_LastClickedID: 65202
+    m_ExpandedIDs: 00000000886800008a6800008c6800008e680000906800009268000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -616,7 +616,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fc580000fe5800000059000002590000045900000659000000ca9a3b
+    m_ExpandedIDs: 00000000886800008a6800008c6800008e680000906800009268000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
