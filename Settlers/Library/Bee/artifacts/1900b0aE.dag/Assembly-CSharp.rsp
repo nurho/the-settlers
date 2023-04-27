@@ -364,6 +364,7 @@
 "Assets/TokenManager.cs"
 "Assets/TradeController.cs"
 "Assets/TurnIndicator.cs"
+"Assets/YearOfPlentyPanelController.cs"
 -langversion:8.0
 
 /deterministic

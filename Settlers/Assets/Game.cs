@@ -52,6 +52,7 @@ public class Game : MonoBehaviour {
     ResourceManager resource_manager;
     TurnIndicator turn_indicator;
     public static GameObject monopoly_panel;
+    public static GameObject year_of_plenty_panel;
 
     // Set variables
     public static GameStates game_state = GameStates.first_turn;
@@ -153,7 +154,7 @@ public class Game : MonoBehaviour {
     public void build_settlement() {
         PlayerController playerc = players[player_turn].GetComponent<PlayerController>();
         if (turn_state == TurnStates.general) {
-            if ((playerc.lumber > 0) && (playerc.brick > 0) && (playerc.wool > 0) && (playerc.grain > 0)) {
+            if ((playerc.lumber > 0) && (playerc.brick > 0) && (playerc.wool > 0) && (playerc.grain > 0) && (playerc.free_settlements > 0)) {
                 playerc.lumber--;
                 playerc.brick--;
                 playerc.wool--;
@@ -180,7 +181,7 @@ public class Game : MonoBehaviour {
     public void build_city() {
         PlayerController playerc = players[player_turn].GetComponent<PlayerController>();
         if (turn_state == TurnStates.general) {
-            if ((playerc.ore >= 3) && (playerc.grain >= 2)) {
+            if ((playerc.ore >= 3) && (playerc.grain >= 2) && (playerc.free_cities > 0)) {
                 playerc.ore -= 3;
                 playerc.grain -= 2;
                 playerc.refresh_UI();
@@ -203,7 +204,7 @@ public class Game : MonoBehaviour {
     public void build_road() {
         PlayerController playerc = players[player_turn].GetComponent<PlayerController>();
         if (turn_state == TurnStates.general) {
-            if ((playerc.lumber > 0) && (playerc.brick > 0)) {
+            if ((playerc.lumber > 0) && (playerc.brick > 0) && (playerc.free_roads > 0)) {
                 playerc.lumber--;
                 playerc.brick--;
                 playerc.refresh_UI();
@@ -345,6 +346,9 @@ public class Game : MonoBehaviour {
 
         monopoly_panel = GameObject.Find("MonopolyPanel");
         monopoly_panel.SetActive(false);
+
+        year_of_plenty_panel = GameObject.Find("YearOfPlentyPanel");
+        year_of_plenty_panel.SetActive(false);
     }
 
     // Update is called once per frame

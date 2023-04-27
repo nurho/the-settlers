@@ -12,17 +12,17 @@ public class PlayerController : MonoBehaviour
     // ----------------
 
     // Settlement variables.
-    int free_settlements = 5;
+    public int free_settlements = 5;
     public GameObject current_settlement;
     List<GameObject> settlements;
 
     // City variables.
-    int free_cities = 4;
+    public int free_cities = 4;
     public GameObject current_city;
     List<GameObject> cities;
 
     // Road variables.
-    int free_roads = 15;
+    public int free_roads = 15;
     public GameObject current_road;
     List<GameObject> roads;
 
@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
     public void place_city() {
         sfx.place_sound();
         free_cities--;
+        free_settlements++;
         current_city = cities[free_cities - 1];
         victory_points++;
         refresh_UI();

@@ -88,7 +88,8 @@ public class DevCardController : MonoBehaviour
                 GameObject.Find("UI").GetComponent<InventoryUIController>().close_inventory();
                 break;
             case "year_of_plenty":
-                // TODO Add year of plenty
+                Game.turn_state = Game.TurnStates.stealing;
+                Game.year_of_plenty_panel.SetActive(true);
                 player.remove_card(type);
                 GameObject.Find("UI").GetComponent<InventoryUIController>().close_inventory();
                 break;
