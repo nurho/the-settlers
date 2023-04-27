@@ -76,7 +76,8 @@ public class DevCardController : MonoBehaviour
                 GameObject.Find("UI").GetComponent<InventoryUIController>().close_inventory();
                 break;
             case "monopoly":
-                // TODO Add monopoly
+                Game.turn_state = Game.TurnStates.stealing;
+                Game.monopoly_panel.SetActive(true);
                 player.remove_card(type);
                 GameObject.Find("UI").GetComponent<InventoryUIController>().close_inventory();
                 break;

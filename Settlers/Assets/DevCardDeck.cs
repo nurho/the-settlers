@@ -12,7 +12,7 @@ public class DevCardDeck : MonoBehaviour
     // ----------------
 
     int cards_remaining = 25;
-    List<string> deck = new List<string>();
+    List<string> deck;
 
 
     // ----------------
@@ -46,9 +46,14 @@ public class DevCardDeck : MonoBehaviour
             } else if (i == 1) {
                 temp_deck.Insert(0, card);
             }
+        } 
+        
+        foreach (string card in temp_deck) {
+            Debug.Log("Temp " + card);
         }
 
-        deck = temp_deck;
+
+        deck = new List<string>(temp_deck);
     }
     
 
@@ -56,6 +61,7 @@ public class DevCardDeck : MonoBehaviour
     void Start()
     {
         // Setup the deck of cards
+        deck = new List<string>();
 
         // Add knights
         for (int i = 0; i < 14; i++) {
@@ -77,7 +83,15 @@ public class DevCardDeck : MonoBehaviour
         deck.Add("palace");
         deck.Add("university");
 
+        foreach (string card in deck) {
+            Debug.Log("Pre " + card);
+        }
+
         shuffle();
+
+        foreach (string card in deck) {
+            Debug.Log("Post " + card);
+        }
     }
 
     // Update is called once per frame

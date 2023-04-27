@@ -150,6 +150,25 @@ public class PlayerController : MonoBehaviour
         refresh_UI();
     }
 
+    public int check_resource(string resource) {
+        switch (resource) {
+            case "lumber":
+                return lumber;
+            case "wool":
+                return wool;
+            case "grain":
+                return grain;
+            case "brick":
+                return brick;
+            case "ore":
+                return ore;
+            default:
+                break;
+        }
+        return 0;
+    }
+
+
     /// <summary>
     /// Gives the player a card of the specified type.
     /// </summary>

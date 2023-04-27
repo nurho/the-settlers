@@ -51,6 +51,7 @@ public class Game : MonoBehaviour {
     PlayerController largest_army_player;
     ResourceManager resource_manager;
     TurnIndicator turn_indicator;
+    public static GameObject monopoly_panel;
 
     // Set variables
     public static GameStates game_state = GameStates.first_turn;
@@ -341,6 +342,9 @@ public class Game : MonoBehaviour {
         // Find other objects
         resource_manager = this.GetComponent<ResourceManager>();
         turn_indicator = GameObject.Find("TurnIndicator").GetComponent<TurnIndicator>();
+
+        monopoly_panel = GameObject.Find("MonopolyPanel");
+        monopoly_panel.SetActive(false);
     }
 
     // Update is called once per frame
