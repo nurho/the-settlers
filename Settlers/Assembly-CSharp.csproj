@@ -70,6 +70,7 @@
     <Compile Include="Assets\MonopolyPanelController.cs" />
     <Compile Include="Assets\DevCardController.cs" />
     <Compile Include="Assets\ResourceManager.cs" />
+    <Compile Include="Assets\YearOfPlentyPanelController.cs" />
     <Compile Include="Assets\IntersectionManager.cs" />
     <Compile Include="Assets\RobberController.cs" />
     <Compile Include="Assets\TurnIndicator.cs" />
@@ -82,7 +83,6 @@
     <Compile Include="Assets\EdgeManager.cs" />
     <Compile Include="Assets\PlayerUIController.cs" />
     <Compile Include="Assets\EdgeController.cs" />
-    <Compile Include="Assets\YearOfPlentyPanelController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

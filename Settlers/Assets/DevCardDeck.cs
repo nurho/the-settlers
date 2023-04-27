@@ -37,23 +37,29 @@ public class DevCardDeck : MonoBehaviour
     /// Randomise the order of cards in the deck.
     /// </summary>
     private void shuffle() {
-        int i;
+        /*
+        //int i;
         List<string> temp_deck = new List<string>();
         foreach (string card in deck) {
-            i = Random.Range(0, 2);
+            int i = Random.Range(0, 2);
+            Debug.Log(i);
             if (i == 0) {
                 temp_deck.Add(card);
             } else if (i == 1) {
                 temp_deck.Insert(0, card);
             }
-        } 
-        
-        foreach (string card in temp_deck) {
-            Debug.Log("Temp " + card);
+
+        }
+*/
+        for (int i = 0; i < deck.Count; i++) {
+            string temp = deck[i];
+            int r = Random.Range(0, deck.Count);
+            deck[i] = deck[r];
+            deck[r] = temp;
         }
 
 
-        deck = new List<string>(temp_deck);
+        //deck = new List<string>(temp_deck);
     }
     
 
@@ -87,6 +93,10 @@ public class DevCardDeck : MonoBehaviour
             Debug.Log("Pre " + card);
         }
 
+        shuffle();
+        shuffle();
+        shuffle();
+        shuffle();
         shuffle();
 
         foreach (string card in deck) {
