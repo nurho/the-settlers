@@ -78,6 +78,7 @@ public class DevCardController : MonoBehaviour
             case "monopoly":
                 Game.turn_state = Game.TurnStates.stealing;
                 Game.monopoly_panel.SetActive(true);
+                GameObject.Find("MonopolyPlayerName").GetComponent<Text>().text = Game.get_current_player().GetComponent<PlayerController>().get_name();
                 player.remove_card(type);
                 GameObject.Find("UI").GetComponent<InventoryUIController>().close_inventory();
                 break;
@@ -90,6 +91,7 @@ public class DevCardController : MonoBehaviour
             case "year_of_plenty":
                 Game.turn_state = Game.TurnStates.stealing;
                 Game.year_of_plenty_panel.SetActive(true);
+                GameObject.Find("YearOfPlentyPlayerName").GetComponent<Text>().text = Game.get_current_player().GetComponent<PlayerController>().get_name();
                 player.remove_card(type);
                 GameObject.Find("UI").GetComponent<InventoryUIController>().close_inventory();
                 break;

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class TradeController : MonoBehaviour
 {
     GameObject trading_panel;
+    GameObject player_trading_panel;
     InputField lumber_give_field;
     InputField brick_give_field;
     InputField wool_give_field;
@@ -20,6 +21,20 @@ public class TradeController : MonoBehaviour
     InputField ore_receive_field;
     
     PlayerController current_player;
+    List<PlayerController> trade_players;
+    int trade_player_num;
+
+    int player_give_lumber;
+    int player_give_brick;
+    int player_give_wool;
+    int player_give_grain;
+    int player_give_ore;
+
+    int player_receive_lumber;
+    int player_receive_brick;
+    int player_receive_wool;
+    int player_receive_grain;
+    int player_receive_ore;
 
     public void trade_button() {
         if (Game.turn_state == Game.TurnStates.general) {
@@ -106,15 +121,114 @@ public class TradeController : MonoBehaviour
     }
 
     public void player_trade_button() {
+        int.TryParse(lumber_give_field.text, out player_give_lumber);
+        int.TryParse(brick_give_field.text, out player_give_brick);
+        int.TryParse(wool_give_field.text, out player_give_wool);
+        int.TryParse(grain_give_field.text, out player_give_grain);
+        int.TryParse(ore_give_field.text, out player_give_ore);
+
+        int.TryParse(lumber_receive_field.text, out player_receive_lumber);
+        int.TryParse(brick_receive_field.text, out player_receive_brick);
+        int.TryParse(wool_receive_field.text, out player_receive_wool);
+        int.TryParse(grain_receive_field.text, out player_receive_grain);
+        int.TryParse(ore_receive_field.text, out player_receive_ore);
+
         reset_fields();
-        Game.turn_state = Game.TurnStates.general;
         trading_panel.SetActive(false);
+
+        if ((current_player.lumber >= player_give_lumber) &&
+            (current_player.brick >= player_give_brick) &&
+            (current_player.wool >= player_give_wool) &&
+            (current_player.grain >= player_give_grain) &&
+            (current_player.ore >= player_give_ore)) {
+            player_trading_panel.SetActive(true);
+
+            GameObject.Find("LumberPlayerGiveText").GetComponent<Text>().text = player_give_lumber.ToString();
+            GameObject.Find("BrickPlayerGiveText").GetComponent<Text>().text = player_give_brick.ToString();
+            GameObject.Find("WoolPlayerGiveText").GetComponent<Text>().text = player_give_wool.ToString();
+            GameObject.Find("GrainPlayerGiveText").GetComponent<Text>().text = player_give_grain.ToString();
+            GameObject.Find("OrePlayerGiveText").GetComponent<Text>().text = player_give_ore.ToString();
+
+            GameObject.Find("LumberPlayerReceiveText").GetComponent<Text>().text = player_receive_lumber.ToString();
+            GameObject.Find("BrickPlayerReceiveText").GetComponent<Text>().text = player_receive_brick.ToString();
+            GameObject.Find("WoolPlayerReceiveText").GetComponent<Text>().text = player_receive_wool.ToString();
+            GameObject.Find("GrainPlayerReceiveText").GetComponent<Text>().text = player_receive_grain.ToString();
+            GameObject.Find("OrePlayerReceiveText").GetComponent<Text>().text = player_receive_ore.ToString();
+
+            trade_players = new List<PlayerController>();
+
+            foreach (GameObject player_object in Game.players) {
+                trade_players.Add(player_object.GetComponent<PlayerController>());
+            }
+
+            trade_players.Remove(current_player);
+            trade_player_num = 0;
+            GameObject.Find("PlayerTradeText").GetComponent<Text>().text = trade_players[trade_player_num].get_name() + " accept trade?";
+        } else {
+            Game.turn_state = Game.TurnStates.general;
+        }
     }
 
     public void cancel_trade_button() {
         reset_fields();
         Game.turn_state = Game.TurnStates.general;
         trading_panel.SetActive(false);
+    }
+
+    public void accept_trade_button() {
+        if ((trade_players[trade_player_num].lumber >= player_receive_lumber) &&
+                (trade_players[trade_player_num].brick >= player_receive_brick) &&
+                (trade_players[trade_player_num].wool >= player_receive_wool) &&
+                (trade_players[trade_player_num].grain >= player_receive_grain) &&
+                (trade_players[trade_player_num].ore >= player_receive_ore)) {
+            trade_players[trade_player_num].give_resource("lumber", -player_receive_lumber);
+            trade_players[trade_player_num].give_resource("brick", -player_receive_brick);
+            trade_players[trade_player_num].give_resource("wool", -player_receive_wool);
+            trade_players[trade_player_num].give_resource("grain", -player_receive_grain);
+            trade_players[trade_player_num].give_resource("ore", -player_receive_ore);
+
+            trade_players[trade_player_num].give_resource("lumber", player_give_lumber);
+            trade_players[trade_player_num].give_resource("brick", player_give_brick);
+            trade_players[trade_player_num].give_resource("wool", player_give_wool);
+            trade_players[trade_player_num].give_resource("grain", player_give_grain);
+            trade_players[trade_player_num].give_resource("ore", player_give_ore);
+
+            current_player.give_resource("lumber", -player_give_lumber);
+            current_player.give_resource("brick", -player_give_brick);
+            current_player.give_resource("wool", -player_give_wool);
+            current_player.give_resource("grain", -player_give_grain);
+            current_player.give_resource("ore", -player_give_ore);
+
+            current_player.give_resource("lumber", player_receive_lumber);
+            current_player.give_resource("brick", player_receive_brick);
+            current_player.give_resource("wool", player_receive_wool);
+            current_player.give_resource("grain", player_receive_grain);
+            current_player.give_resource("ore", player_receive_ore);
+
+            player_trading_panel.SetActive(false);
+            Game.turn_state = Game.TurnStates.general;
+
+        } else {
+            trade_player_num++;
+            if (trade_player_num >= trade_players.Count) {
+                trade_player_num = 0;
+                player_trading_panel.SetActive(false);
+                Game.turn_state = Game.TurnStates.general;
+            } else {
+                GameObject.Find("PlayerTradeText").GetComponent<Text>().text = trade_players[trade_player_num].get_name() + " accept trade?";
+            }
+
+        }
+    }
+
+    public void decline_trade_button() {
+        trade_player_num++;
+        if (trade_player_num >= trade_players.Count) {
+            player_trading_panel.SetActive(false);
+            Game.turn_state = Game.TurnStates.general;
+        } else {
+            GameObject.Find("PlayerTradeText").GetComponent<Text>().text = trade_players[trade_player_num].get_name() + " accept trade?";
+        }
     }
 
     void reset_fields() {
@@ -135,6 +249,7 @@ public class TradeController : MonoBehaviour
     void Start()
     {
         trading_panel = GameObject.Find("TradePanel");
+        player_trading_panel = GameObject.Find("PlayerTradePanel");
         lumber_give_field = GameObject.Find("LumberGiveInputField").GetComponent<InputField>();
         brick_give_field = GameObject.Find("BrickGiveInputField").GetComponent<InputField>();
         wool_give_field = GameObject.Find("WoolGiveInputField").GetComponent<InputField>();
@@ -148,6 +263,7 @@ public class TradeController : MonoBehaviour
         ore_receive_field = GameObject.Find("OreReceiveInputField").GetComponent<InputField>();
 
         trading_panel.SetActive(false);
+        player_trading_panel.SetActive(false);
     }
 
     // Update is called once per frame
