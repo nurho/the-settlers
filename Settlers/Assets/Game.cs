@@ -92,42 +92,34 @@ public class Game : MonoBehaviour {
     }
 
     private List<string> create_random_tile_layout() {
-        int i;
-        List<string> temp_layout = new List<string>();
-        foreach (string tile in basic_tile_layout) {
-            i = Random.Range(0, 2);
-            Debug.Log("Tile random: " + i);
-            if (i == 0) {
-                temp_layout.Add(tile);
-            } else if (i == 1) {
-                temp_layout.Insert(0, tile);
-            }
-        }
+        List<string> temp_layout = new List<string>(basic_tile_layout);
 
+        for (int i = 0; i < temp_layout.Count; i++) {
+            string temp = temp_layout[i];
+            int r = Random.Range(0, temp_layout.Count);
+            temp_layout[i] = temp_layout[r];
+            temp_layout[r] = temp;
+        }
         return temp_layout;
     }
 
     private List<int> create_random_token_layout(List<string> tiles) {
         List<int> numbers = new List<int> { 2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12 };
-        List<int> temp_layout = new List<int>();
 
-        int i;
-        foreach (int token in numbers) {
-            i = Random.Range(0, 2);
-            if (i == 0) {
-                temp_layout.Add(token);
-            } else if (i == 1) {
-                temp_layout.Insert(0, token);
-            }
+        for (int i = 0; i < numbers.Count; i++) {
+            int temp = numbers[i];
+            int r = Random.Range(0, numbers.Count);
+            numbers[i] = numbers[r];
+            numbers[r] = temp;
         }
 
-        for (i = 0; i < tiles.Count; i++) {
+        for (int i = 0; i < tiles.Count; i++) {
             if (tiles[i] == "desert") {
-                temp_layout.Insert(i, 0);
+                numbers.Insert(i, 0);
             }
         }
 
-        return temp_layout;
+        return numbers;
     }
 
     /// <summary>

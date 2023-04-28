@@ -97,6 +97,7 @@ public class PlayerController : MonoBehaviour
         roads_placed++;
         current_road = roads[free_roads - 1];
         GameObject.Find("Game").GetComponent<Game>().check_longest_road(this);
+        refresh_UI();
     }
 
 // TODO Document

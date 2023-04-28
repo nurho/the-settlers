@@ -13,6 +13,7 @@ public class InventoryUIController : MonoBehaviour
     Text wool_count;
     Text grain_count;
     Text ore_count;
+    Text victory_points;
     PlayerController current_player;
 
     List<GameObject> current_cards = new List<GameObject>();
@@ -25,6 +26,7 @@ public class InventoryUIController : MonoBehaviour
         wool_count.text = current_player.wool.ToString();
         grain_count.text = current_player.grain.ToString();
         ore_count.text = current_player.ore.ToString();
+        victory_points.text = current_player.victory_points.ToString();
     }
 
     void create_dev_cards() {
@@ -67,6 +69,7 @@ public class InventoryUIController : MonoBehaviour
         wool_count = GameObject.Find("WoolCount").GetComponent<Text>();
         grain_count = GameObject.Find("GrainCount").GetComponent<Text>();
         ore_count = GameObject.Find("OreCount").GetComponent<Text>();
+        victory_points = GameObject.Find("VPText").GetComponent<Text>();
 
         // Initially disable the inventory panel
         inventory_panel.SetActive(false);
